@@ -32,6 +32,6 @@ provider "kubernetes" "main" {
   config {
     host                   = component.cluster.cluster_api
     cluster_ca_certificate = component.cluster.cluster_ca
-    token                  = identity_token.kube.jwt
+    token                  = "foobar"
   }
 }

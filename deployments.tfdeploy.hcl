@@ -2,10 +2,6 @@ identity_token "gcp" {
     audience = ["//iam.googleapis.com/projects/770146596695/locations/global/workloadIdentityPools/my-tfc-pool-kukho/providers/my-tfc-provider-id"]
 }
 
-identity_token "kube" {
-    audience = ["da-demo"]
-}
-
 deployment "demo" {
     inputs = {
         cluster_name        = "demo"
