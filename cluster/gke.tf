@@ -1,5 +1,13 @@
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
+terraform {
+  required_providers {
+    google = {
+      source  = "hashicorp/google-beta"
+      version = "~> 5.37.0"
+    }
+  }
+}
 
 variable "cluster_name" {
   type = string
