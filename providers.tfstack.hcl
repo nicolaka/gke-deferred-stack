@@ -9,7 +9,7 @@ required_providers {
   }
 }
 
-provider "google-beta" "main" {
+provider "google" "main" {
   config {
     project = var.gcp_project
     region  = var.gcp_region
