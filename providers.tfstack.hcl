@@ -3,13 +3,13 @@ required_providers {
     source  = "hashicorp/kubernetes"
     version = "~> 2.31.0"
   }
-  google = {
+  google-beta = {
     source  = "hashicorp/google-beta"
     version = "~> 5.37.0"
   }
 }
 
-provider "google" "main" {
+provider "google-beta" "main" {
   config {
     project = var.gcp_project
     region  = var.gcp_region

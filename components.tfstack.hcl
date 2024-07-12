@@ -2,7 +2,7 @@ component "cluster" {
   source = "./cluster"
 
   providers = {
-    google = provider.google.main
+    google = provider.google-beta.main
   }
 
   inputs = {
