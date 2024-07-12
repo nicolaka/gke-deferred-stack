@@ -20,7 +20,7 @@ provider "google" "main" {
         "subject_token_type": "urn:ietf:params:oauth:token-type:jwt",
         "token_url": "https://sts.googleapis.com/v1/token",
         "credential_source": {
-          "file": var.identity_token_file
+          "file": var.identity_token_gcp
         },
         "service_account_impersonation_url": format("https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/%s:generateAccessToken", var.gcp_service_account_email)
       }
@@ -32,6 +32,6 @@ provider "kubernetes" "main" {
   config {
     host                   = component.cluster.cluster_api
     cluster_ca_certificate = component.cluster.cluster_ca
-    token                  = file(identity_token.kube.jwt_filename)
+    token                  = file(var.identity_token_kube)
   }
 }

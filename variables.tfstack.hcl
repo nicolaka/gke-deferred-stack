@@ -6,7 +6,11 @@ variable "kubernetes_version" {
   type = string
 }
 
-variable "identity_token_file" {
+variable "identity_token_gcp" {
+  type = string
+}
+
+variable "identity_token_kube" {
   type = string
 }
 
