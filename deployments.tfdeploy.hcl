@@ -3,7 +3,7 @@ identity_token "gcp" {
 }
 
 identity_token "kube" {
-    audience = "da-demo"
+    audience = ["da-demo"]
 }
 
 deployment "demo" {
