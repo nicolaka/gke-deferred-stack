@@ -4,8 +4,8 @@ required_providers {
     version = "~> 2.31.0"
   }
   google = {
-    source  = "hashicorp/google"
-    version = "~> 4.85.0"
+    source  = "hashicorp/google-beta"
+    version = "~> 5.37.0"
   }
 }
 
@@ -13,7 +13,6 @@ provider "google" "main" {
   config {
     project = var.gcp_project
     region  = var.gcp_region
-    zone    = var.gcp_zone
     credentials = jsonencode(
       {
         "type": "external_account",
@@ -33,6 +32,6 @@ provider "kubernetes" "main" {
   config {
     host                   = component.cluster.cluster_api
     cluster_ca_certificate = component.cluster.cluster_ca
-    token                  = component.cluster.token
+    token                  = identity_token.kube.jwt
   }
 }
