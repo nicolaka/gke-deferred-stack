@@ -32,6 +32,6 @@ provider "kubernetes" "main" {
   config {
     host                   = component.cluster.cluster_api
     cluster_ca_certificate = component.cluster.cluster_ca
-    token                  = file(identity_token.gcp.jwt_filename)
+    token                  = file(identity_token.kube.jwt_filename)
   }
 }
