@@ -3,7 +3,7 @@ required_providers {
     source  = "hashicorp/kubernetes"
     version = "~> 2.31.0"
   }
-  google-beta = {
+  google = {
     source  = "hashicorp/google-beta"
     version = "~> 5.37.0"
   }
