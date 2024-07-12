@@ -17,24 +17,29 @@ variable "workers_count" {
   default = "1"
 }
 
-# This is used to set local variable google_zone.
-# This can be replaced with a statically-configured zone, if preferred.
-data "google_compute_zones" "available" {
-  region = var.region
-}
-
-data "google_client_config" "current" {}
-
 locals {
   google_zone = data.google_compute_zones.available.names[0]
 }
 
+# This is used to set local variable google_zone.
+# This can be replaced with a statically-configured zone, if preferred.
+data "google_compute_zones" "available" {
+  provider = google-beta
+  region = var.region
+}
+
+data "google_client_config" "current" {
+  provider = google-beta
+}
+
 data "google_container_engine_versions" "supported" {
+  provider = google-beta
   location       = local.google_zone
   version_prefix = var.kubernetes_version
 }
 
 resource "google_container_cluster" "default" {
+  provider = google-beta
   name               = var.cluster_name
   location           = local.google_zone
   initial_node_count = var.workers_count
