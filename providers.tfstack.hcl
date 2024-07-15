@@ -32,6 +32,7 @@ provider "kubernetes" "main" {
   config {
     host                   = component.cluster.cluster_api
     cluster_ca_certificate = component.cluster.cluster_ca
-    token                  = file(var.identity_token_kube)
+    token                  = component.cluster.token
+    # token                  = file(var.identity_token_kube)
   }
 }
