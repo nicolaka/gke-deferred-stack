@@ -72,7 +72,7 @@ resource "google_container_cluster" "default" {
   }
 
   identity_service_config {
-    enabled = true
+    enabled = false
   }
 
   deletion_protection = false
