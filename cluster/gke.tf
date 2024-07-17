@@ -3,8 +3,8 @@
 terraform {
   required_providers {
     google = {
-      source  = "hashicorp/google-beta"
-      version = "~> 5.37.0"
+      source  = "hashicorp/google"
+      version = "~> 5.38.0"
     }
   }
 }
@@ -71,9 +71,9 @@ resource "google_container_cluster" "default" {
     ]
   }
 
-  identity_service_config {
-    enabled = false
-  }
+  # identity_service_config {
+  #   enabled = false
+  # }
 
-  deletion_protection = false
+  # deletion_protection = false
 }
