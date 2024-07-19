@@ -6,6 +6,9 @@ terraform {
       source  = "hashicorp/google"
       version = "~> 5.38.0"
     }
+    local = {
+      source = "hashicorp/local"
+    }
   }
 }
 
@@ -76,4 +79,9 @@ resource "google_container_cluster" "default" {
   # }
 
   # deletion_protection = false
+}
+
+resource "local_file" "google_token" {
+  filename = "google_token"
+  content =  data.google_client_config.current.access_token
 }

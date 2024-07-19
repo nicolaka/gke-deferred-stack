@@ -3,6 +3,7 @@ component "cluster" {
 
   providers = {
     google = provider.google.main
+    local = provider.local.main
   }
 
   inputs = {

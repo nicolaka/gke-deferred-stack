@@ -7,6 +7,10 @@ required_providers {
     source  = "hashicorp/google"
     version = "~> 5.38.0"
   }
+  local = {
+    source = "hashicorp/local"
+    version = "~> 2.5.1"
+  }
 }
 
 provider "google" "main" {
@@ -33,6 +37,7 @@ provider "kubernetes" "main" {
     host                   = component.cluster.cluster_api
     cluster_ca_certificate = component.cluster.cluster_ca
     token                  = component.cluster.token
-    # token                  = file(var.identity_token_kube)
   }
 }
+
+provider "local" "main" {}
