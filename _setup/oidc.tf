@@ -42,7 +42,7 @@ resource "google_project_service" "services" {
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/iam_workload_identity_pool
 resource "google_iam_workload_identity_pool" "tfc_pool" {
   provider                  = google-beta
-  workload_identity_pool_id = "hcp-stacks-demo"
+  workload_identity_pool_id = "stacks-demo-${random_string.demo.result}"
 }
 
 # Creates an identity pool provider which uses an attribute condition
@@ -53,7 +53,7 @@ resource "google_iam_workload_identity_pool" "tfc_pool" {
 resource "google_iam_workload_identity_pool_provider" "tfc_provider" {
   provider                           = google-beta
   workload_identity_pool_id          = google_iam_workload_identity_pool.tfc_pool.workload_identity_pool_id
-  workload_identity_pool_provider_id = "hcp-stacks-demo"
+  workload_identity_pool_provider_id = "stacks-demo-${random_string.demo.result}"
   attribute_mapping = {
     "google.subject"                            = "assertion.sub",
     "attribute.aud"                             = "assertion.aud",
@@ -83,7 +83,7 @@ resource "google_iam_workload_identity_pool_provider" "tfc_provider" {
 #
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_service_account
 resource "google_service_account" "tfc_service_account" {
-  account_id   = "stacks-demo-service-account"
+  account_id   = "stacks-demo-${random_string.demo.result}"
   display_name = "Terraform Cloud Service Account"
 }
 

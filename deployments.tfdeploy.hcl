@@ -1,5 +1,5 @@
 identity_token "gcp" {
-    audience = ["//iam.googleapis.com/projects/770146596695/locations/global/workloadIdentityPools/hcp-stacks-demo/providers/hcp-stacks-demo"]
+    audience = ["//iam.googleapis.com/projects/770146596695/locations/global/workloadIdentityPools/stacks-demo-6ux0/providers/stacks-demo-6ux0"]
 }
 
 deployment "demo" {
@@ -7,9 +7,8 @@ deployment "demo" {
         cluster_name        = "demo"
         kubernetes_version  = "1.30"
         identity_token_gcp = identity_token.gcp.jwt_filename
-        gcp_audience        = "//iam.googleapis.com/projects/770146596695/locations/global/workloadIdentityPools/hcp-stacks-demo/providers/hcp-stacks-demo"
+        gcp_audience        = "//iam.googleapis.com/projects/770146596695/locations/global/workloadIdentityPools/stacks-demo-6ux0/providers/stacks-demo-6ux0"
         gcp_project         = "hc-terraform-k8s-testing"
         gcp_region          = "europe-central2"
-        gcp_service_account_email = "stacks-demo-service-account@hc-terraform-k8s-testing.iam.gserviceaccount.com"
-    }
+        gcp_service_account_email = "stacks-demo-6ux0@hc-terraform-k8s-testing.iam.gserviceaccount.com"
 }
