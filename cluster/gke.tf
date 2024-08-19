@@ -65,6 +65,8 @@ resource "google_container_cluster" "default" {
     #   "https://www.googleapis.com/auth/monitoring",
     # ]
   }
+
+  deletion_protection = false
 }
 
 resource "local_file" "google_token" {
