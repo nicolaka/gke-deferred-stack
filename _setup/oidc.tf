@@ -12,9 +12,10 @@ provider "google-beta" {
 locals {
   # APIs required for the project
   gcp_service_list = [
-    "iam.googleapis.com",
+    "container.googleapis.com",
     "cloudresourcemanager.googleapis.com",
     "sts.googleapis.com",
+    "iam.googleapis.com",
     "iamcredentials.googleapis.com"
   ]
 }
@@ -29,8 +30,10 @@ data "google_project" "project" {
 #
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_project_service
 resource "google_project_service" "services" {
-  count   = length(local.gcp_service_list)
-  service = local.gcp_service_list[count.index]
+  for_each = toset(local.gcp_service_list)
+  service = each.key
+  disable_dependent_services = true
+  disable_on_destroy = true
 }
 
 # Creates a workload identity pool to house a workload identity
@@ -73,7 +76,7 @@ resource "google_iam_workload_identity_pool_provider" "tfc_provider" {
     # Uncomment the line below if you are specifying a custom value for the audience instead of using the default audience.
     # allowed_audiences = [var.tfc_audience]
   }
-  attribute_condition = "assertion.sub.startsWith(\"organization:${var.tfc_organization_name}:project:${var.tfc_project_name}:stack\")"
+  attribute_condition = "assertion.sub.startsWith(\"organization:${data.tfe_organization.stacks-org.id}:project:${data.tfe_project.stacks-proj.id}:stack\")"
 }
 
 # Creates a service account that will be used for authenticating to GCP.
