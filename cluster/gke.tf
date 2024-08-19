@@ -4,7 +4,7 @@ terraform {
   required_providers {
     google = {
       source  = "hashicorp/google"
-      version = "~> 5.38.0"
+      version = "~> 5.42.0"
     }
     local = {
       source = "hashicorp/local"
@@ -29,7 +29,14 @@ variable "workers_count" {
 }
 
 locals {
-  google_zone = data.google_compute_zones.available.names[0]
+  google_zone  = data.google_compute_zones.available.names[0]
+  cluster_name = "${var.cluster_name}-${random_string.demo.result}"
+}
+
+resource "random_string" "demo" {
+  length = 4
+  special = false
+  upper = false
 }
 
 # This is used to set local variable google_zone.
@@ -47,7 +54,7 @@ data "google_container_engine_versions" "supported" {
 }
 
 resource "google_container_cluster" "default" {
-  name               = var.cluster_name
+  name               = local.cluster_name
   location           = local.google_zone
   initial_node_count = var.workers_count
   min_master_version = data.google_container_engine_versions.supported.latest_master_version
@@ -73,12 +80,6 @@ resource "google_container_cluster" "default" {
     #   "https://www.googleapis.com/auth/monitoring",
     # ]
   }
-
-  # identity_service_config {
-  #   enabled = false
-  # }
-
-  # deletion_protection = false
 }
 
 resource "local_file" "google_token" {
