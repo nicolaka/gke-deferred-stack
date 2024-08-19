@@ -3,7 +3,8 @@ component "cluster" {
 
   providers = {
     google = provider.google.main
-    local = provider.local.main
+    local  = provider.local.main
+    random = provider.random.main
   }
 
   inputs = {
