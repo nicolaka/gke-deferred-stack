@@ -62,7 +62,7 @@ resource "google_container_cluster" "default" {
     machine_type = "n1-standard-4"
   }
 
-  deletion_protection = false
+  # deletion_protection = false
 }
 
 resource "local_file" "google_token" {
