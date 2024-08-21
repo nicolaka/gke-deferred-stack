@@ -42,6 +42,4 @@ provider "kubernetes" "main" {
   }
 }
 
-provider "local" "main" {}
-
 provider "random" "main" {}
