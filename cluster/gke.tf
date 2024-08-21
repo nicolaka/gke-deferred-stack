@@ -10,9 +10,6 @@ terraform {
       # that prevents issuing auth tokens for GKE
       version = "4.59.0"
     }
-    local = {
-      source = "hashicorp/local"
-    }
   }
 }
 
