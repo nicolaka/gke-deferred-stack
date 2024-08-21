@@ -9,10 +9,6 @@ required_providers {
     # that prevents issuing auth tokens for GKE
     version = "4.59.0"
   }
-  local = {
-    source = "hashicorp/local"
-    version = "~> 2.5.1"
-  }
   random = {
     source = "hashicorp/random"
     version = "~> 3.6.2"
