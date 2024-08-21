@@ -5,7 +5,9 @@ required_providers {
   }
   google = {
     source  = "hashicorp/google"
-    version = "~> 5.42.0"
+    # this is important - newer versions contain an issue in the `google_client_config` 
+    # that prevents issuing auth tokens for GKE
+    version = "4.59.0"
   }
   local = {
     source = "hashicorp/local"

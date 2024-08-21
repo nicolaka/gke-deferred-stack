@@ -5,7 +5,10 @@ terraform {
   required_providers {
     google = {
       source  = "hashicorp/google"
-      version = "~> 5.42.0"
+      
+      # this is important - newer versions contain an issue in the `google_client_config` 
+      # that prevents issuing auth tokens for GKE
+      version = "4.59.0"
     }
     local = {
       source = "hashicorp/local"
@@ -19,9 +22,9 @@ locals {
 }
 
 resource "random_string" "demo" {
-  length = 4
+  length  = 4
   special = false
-  upper = false
+  upper   = false
 }
 
 # This is used to set local variable google_zone.
@@ -57,13 +60,6 @@ resource "google_container_cluster" "default" {
 
   node_config {
     machine_type = "n1-standard-4"
-
-    # oauth_scopes = [
-    #   "https://www.googleapis.com/auth/compute",
-    #   "https://www.googleapis.com/auth/devstorage.read_only",
-    #   "https://www.googleapis.com/auth/logging.write",
-    #   "https://www.googleapis.com/auth/monitoring",
-    # ]
   }
 
   deletion_protection = false
@@ -71,5 +67,5 @@ resource "google_container_cluster" "default" {
 
 resource "local_file" "google_token" {
   filename = "google_token"
-  content =  data.google_client_config.current.access_token != null ? data.google_client_config.current.access_token : "NO-TOKEN"
+  content  = data.google_client_config.current.access_token != null ? data.google_client_config.current.access_token : "NO-TOKEN"
 }
