@@ -6,17 +6,12 @@ output "stack_name" {
   value       = tfe_stack.demo.name
 }
 
-# output "identity_pool_provider" {
-#   description = "Name of GCP workload identity pool."
-#   value = google_iam_workload_identity_pool_provider.tfc_provider.name
-# }
-
-output "service_account_email" {
+output "gcp_service_account_email" {
   description = "Email of federated identity service account."
   value = google_service_account.tfc_service_account.email
 }
 
 output "gcp_audience" {
-  description = "Audience to configure on stack's deployment"
+  description = "Audience for stack's workload identity tokens."
   value = "//iam.googleapis.com/${google_iam_workload_identity_pool_provider.tfc_provider.name}"
 }
