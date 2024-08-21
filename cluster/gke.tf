@@ -6,7 +6,7 @@ terraform {
     google = {
       source  = "hashicorp/google"
       
-      # this is important - newer versions contain an issue in the `google_client_config` 
+      # THIS IS IMPORTANT - newer versions contain an issue in the `google_client_config` datasource
       # that prevents issuing auth tokens for GKE
       version = "4.59.0"
     }
@@ -63,9 +63,4 @@ resource "google_container_cluster" "default" {
   }
 
   # deletion_protection = false
-}
-
-resource "local_file" "google_token" {
-  filename = "google_token"
-  content  = data.google_client_config.current.access_token != null ? data.google_client_config.current.access_token : "NO-TOKEN"
 }
