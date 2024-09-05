@@ -1,5 +1,5 @@
 identity_token "gcp" {
-    audience = ["<fill in value of `gcp_audience` output from `_setup`>"]
+    audience = ["//iam.googleapis.com/projects/770146596695/locations/global/workloadIdentityPools/stacks-demo-8vm0/providers/stacks-demo-8vm0"]
 }
 
 deployment "demo" {
@@ -10,7 +10,7 @@ deployment "demo" {
         gcp_project               = "hc-terraform-k8s-testing"
         gcp_region                = "europe-central2"
 
-        gcp_audience              = "< fill in value of `gcp_audience` output from `_setup` >"
-        gcp_service_account_email = "< fill in value of `gcp_service_account_email` output from `_setup` >"
+        gcp_audience              = "//iam.googleapis.com/projects/770146596695/locations/global/workloadIdentityPools/stacks-demo-8vm0/providers/stacks-demo-8vm0"
+        gcp_service_account_email = "stacks-demo-8vm0@hc-terraform-k8s-testing.iam.gserviceaccount.com"
     }
 }
