@@ -39,3 +39,9 @@ variable "github_token" {
   type      = string
   sensitive = true
 }
+
+# Fork https://github.com/alexsomesan/gke-deferred-stack and change this value to your forked repo
+variable "github_repo_identifier" {
+  type    = string
+  default = "alexsomesan/gke-deferred-stack"
+}
