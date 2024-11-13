@@ -49,7 +49,7 @@ resource "tfe_stack" "demo" {
 
   vcs_repo {
     branch         = "main"
-    identifier     = "alexsomesan/gke-deferred-stack"
+    identifier     = var.github_repo_identifier
     oauth_token_id = tfe_oauth_client.demo.oauth_token_id
   }
 
