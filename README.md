@@ -17,7 +17,7 @@ This does two things:
     * Creates the ODIC IDP configuration in GCloud which enables TFC workload identity authentication from Stacks.
     * Creates the Stack itself in TFC. It doesn't configure it for the custom agent pool mentioned above due to limitations in the TFE provider.
 
-When using the Terraform configuration you will need to set several TF variables:
+When using the Terraform configuration you will need to set several TF variables, and some Google provider environment variables:
 
 ```bash
 # Replace the values in < > as appropriate
@@ -25,6 +25,9 @@ export TF_VAR_tfc_organization_name=<org name>
 export TF_VAR_tfc_project_name=<project name>
 export TF_VAR_github_token=<token, or use $(gh auth token)>
 export TF_VAR_github_repo_identifier=<your github username>/gke-deferred-stack
+
+export GOOGLE_PROJECT=<project_id>
+export GOOGLE_CREDENTIALS=<credentials>  # OPTIONAL - instead you can set up Application Default Credentials on your machine using `gcloud auth application-default login`
 ```
 
 Also, ensure that 
