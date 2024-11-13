@@ -30,8 +30,6 @@ export GOOGLE_PROJECT=<project_id>
 export GOOGLE_CREDENTIALS=<credentials>  # OPTIONAL - instead you can set up Application Default Credentials on your machine using `gcloud auth application-default login`
 ```
 
-Also, ensure that 
-
 3. Ensure Stacks is enabled for your HCP Terraform organization in [Organization Settings > General](https://app.terraform.io/app/m-org-name-here/settings/profile). Stacks is available in Beta on the Free tier.
 4. Create a new Stack in a given Project within that organization. Connect that Stack to your fork of this repo.
 4. Fetch configuration in the Stack UI to trigger the plan / apply cycle.
