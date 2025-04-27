@@ -1,5 +1,6 @@
 identity_token "gcp" {
-    audience = ["//iam.googleapis.com/projects/342971845164/locations/global/workloadIdentityPools/stacks-demo-4y2i/providers/stacks-demo-4y2i"] # String should be the `gcp_audience` output from the Terraform configuration in ./_setup
+  # Must be the fully qualified path to the identity provider: //iam.googleapis.com/projects/<PROJECT NUMBER>/locations/global/workloadIdentityPools/<POOL ID>/providers/<PROVIDER ID>
+  audience = ["//iam.googleapis.com/projects/342971845164/locations/global/workloadIdentityPools/stacks-demo-4y2i/providers/stacks-demo-4y2i"]
 }
 
 deployment "demo" {
