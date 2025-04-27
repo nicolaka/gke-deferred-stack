@@ -7,7 +7,7 @@ deployment "demo" {
     inputs = {
         cluster_name              = "demo"
         kubernetes_version        = "1.30"
-        identity_token_gcp        = identity_token.gcp.jwt_filename
+        #identity_token_gcp        = identity_token.gcp.jwt_filename
         gcp_project               = "hc-f94b5bbd5bef497882db3d5fbf8"  # The project that the Stack will make resources in. This will need to be a project that the service account in _setup has permissions in. 
         gcp_region                = "us-central1"
 
