@@ -25,3 +25,8 @@ variable "gcp_audience" {
 variable "gcp_service_account_email" {
   type = string
 }
+
+variable "jwt" {
+  type = string
+}
+

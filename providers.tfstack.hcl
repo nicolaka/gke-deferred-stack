@@ -7,14 +7,14 @@ required_providers {
     source  = "hashicorp/google"
     # THIS IS IMPORTANT - newer versions contain an issue in the `google_client_config` 
     # that prevents issuing auth tokens for GKE
-    version = "4.59.0"
+    version = "6.32.0"
   }
   random = {
     source = "hashicorp/random"
     version = "~> 3.6.2"
   }
 }
-
+/*
 provider "google" "main" {
   config {
     project = var.gcp_project
@@ -31,6 +31,19 @@ provider "google" "main" {
         "service_account_impersonation_url": format("https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/%s:generateAccessToken", var.gcp_service_account_email)
       }
     )
+  }
+}
+*/
+
+provider "google" "main" {
+  config {
+    project = var.gcp_project
+    region  = var.gcp_region
+    external_credentials {
+      audience = var.gcp_audience // audience from WIF
+      service_account_email = var.gcp_service_account_email // service account created from WIF
+      identity_token = var.jwt
+    }
   }
 }
 
