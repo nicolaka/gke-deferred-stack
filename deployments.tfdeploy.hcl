@@ -1,6 +1,7 @@
 identity_token "gcp" {
   # Must be the fully qualified path to the identity provider: //iam.googleapis.com/projects/<PROJECT NUMBER>/locations/global/workloadIdentityPools/<POOL ID>/providers/<PROVIDER ID>
-  audience = ["//iam.googleapis.com/projects/342971845164/locations/global/workloadIdentityPools/stacks-demo-4y2i/providers/stacks-demo-4y2i"]
+  #audience = ["//iam.googleapis.com/projects/342971845164/locations/global/workloadIdentityPools/stacks-demo-4y2i/providers/stacks-demo-4y2i"]
+  audience = ["hcp.workload.identity"]
 }
 
 deployment "demo" {
