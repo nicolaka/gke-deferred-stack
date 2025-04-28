@@ -1,5 +1,6 @@
 resource "kubernetes_deployment" "hashibank" {
   metadata {
+    namespace = kubernetes_namespace_v1.demo_ns.id
     name = "hashibank"
     labels = {
       app = "hashibank"
@@ -54,6 +55,7 @@ resource "kubernetes_deployment" "hashibank" {
 resource "kubernetes_service_v1" "hashibank" {
   metadata {
     name = "hashibank-svc"
+    namespace = kubernetes_namespace_v1.demo_ns.id
   }
   spec {
     selector = {
