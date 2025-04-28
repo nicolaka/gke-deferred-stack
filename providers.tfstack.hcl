@@ -39,13 +39,14 @@ provider "google" "main" {
   config {
     project = var.gcp_project
     region  = var.gcp_region
-    external_credentials {
-      audience = var.gcp_audience // audience from WIF
-      service_account_email = var.gcp_service_account_email // service account created from WIF
-      identity_token = var.jwt
+    credentials = var.gcp_credentials
+    #external_credentials {
+    #  audience = var.gcp_audience // audience from WIF
+    #  service_account_email = var.gcp_service_account_email // service account created from WIF
+    #  identity_token = var.jwt
     }
-  }
 }
+
 
 
 provider "kubernetes" "main" {
