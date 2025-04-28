@@ -24,3 +24,8 @@ resource "kubernetes_manifest" "demo_workspace" {
     }
   }
 }
+
+resource "kubectl_manifest" "hashibank" {
+  yaml = "${path.module}/hashibank.yaml"
+}
+
