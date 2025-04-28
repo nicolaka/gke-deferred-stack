@@ -14,26 +14,6 @@ required_providers {
     version = "~> 3.6.2"
   }
 }
-/*
-provider "google" "main" {
-  config {
-    project = var.gcp_project
-    region  = var.gcp_region
-    credentials = jsonencode(
-      {
-        "type": "external_account",
-        "audience": var.gcp_audience,
-        "subject_token_type": "urn:ietf:params:oauth:token-type:jwt",
-        "token_url": "https://sts.googleapis.com/v1/token",
-        "credential_source": {
-          "file": var.identity_token_gcp
-        },
-        "service_account_impersonation_url": format("https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/%s:generateAccessToken", var.gcp_service_account_email)
-      }
-    )
-  }
-}
-*/
 
 provider "google" "main" {
   config {
@@ -47,8 +27,6 @@ provider "google" "main" {
     }
 }
 }
-
-
 
 provider "kubernetes" "main" {
   config {

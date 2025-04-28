@@ -6,11 +6,6 @@ variable "kubernetes_version" {
   type = string
 }
 
-/*
-variable "identity_token_gcp" {
-  type = string
-}
-*/
 
 variable "gcp_region" {
   type = string
@@ -33,9 +28,5 @@ variable "jwt" {
   type = string
 }
 
-/*
-variable "gcp_credentials" {
-  type = string
-}
-*/
+
 
