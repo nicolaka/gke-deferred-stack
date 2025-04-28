@@ -7,7 +7,7 @@ required_providers {
     source  = "hashicorp/google"
     # THIS IS IMPORTANT - newer versions contain an issue in the `google_client_config` 
     # that prevents issuing auth tokens for GKE
-    version = "6.25.0"
+    version = "6.32.0"
   }
   random = {
     source = "hashicorp/random"
