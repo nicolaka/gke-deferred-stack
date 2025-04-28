@@ -30,8 +30,9 @@ variable "jwt" {
   type = string
 }
 
+/*
 variable "gcp_credentials" {
   type = string
 }
-
+*/
 
