@@ -29,6 +29,7 @@ variable "gcp_service_account_email" {
 }
 
 variable "jwt" {
+  ephemeral = true
   type = string
 }
 
