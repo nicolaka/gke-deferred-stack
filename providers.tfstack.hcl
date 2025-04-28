@@ -46,6 +46,7 @@ provider "google" "main" {
       identity_token = var.jwt
     }
 }
+}
 
 
 
