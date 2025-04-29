@@ -4,7 +4,7 @@ identity_token "gcp" {
 
 deployment "demo" {
     inputs = {
-        cluster_name              = "demo"
+        cluster_name              = "hashibank-gke-dev-central"
         kubernetes_version        = "1.30"
         jwt                       = identity_token.gcp.jwt
         gcp_project               = "hc-f94b5bbd5bef497882db3d5fbf8"  # The project that the Stack will make resources in. This will need to be a project that the service account in _setup has permissions in. 
