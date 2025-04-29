@@ -1,6 +1,6 @@
 resource "kubernetes_deployment" "hashibank" {
   metadata {
-    namespace = kubernetes_namespace_v1.demo_ns.id
+    namespace = "demo-ns"
     name = "hashibank"
     labels = {
       app = "hashibank"
