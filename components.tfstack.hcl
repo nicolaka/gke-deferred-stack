@@ -21,3 +21,11 @@ component "kube" {
     kubernetes = provider.kubernetes.main
   }
 }
+
+component "app" {
+  source = "./app"
+
+  providers = {
+    kubernetes = provider.kubernetes.main
+  }
+}
