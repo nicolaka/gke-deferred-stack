@@ -22,10 +22,3 @@ component "kube" {
   }
 }
 
-component "app" {
-  source = "./app"
-
-  providers = {
-    kubernetes = provider.kubernetes.main
-  }
-}
