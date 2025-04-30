@@ -2,7 +2,7 @@ identity_token "gcp" {
   audience = ["hcp.workload.identity"]
 }
 
-
+/*
 deployment "hashibank-gke-dev-central" {
     inputs = {
         cluster_name              = "demo"
