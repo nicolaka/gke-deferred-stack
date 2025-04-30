@@ -2,7 +2,7 @@ identity_token "gcp" {
   audience = ["hcp.workload.identity"]
 }
 
-
+/*
 deployment "hashibank-gke-dev-central" {
     inputs = {
         cluster_name              = "hashibank-gke-dev-central"
@@ -27,3 +27,4 @@ deployment "hashibank-gke-dev-west" {
         gcp_service_account_email = "terraform-stacks-sa@hc-f94b5bbd5bef497882db3d5fbf8.iam.gserviceaccount.com" # Should be the `gcp_service_account_email` output from the Terraform configuration in ./_setup
     }
 }
+*/
